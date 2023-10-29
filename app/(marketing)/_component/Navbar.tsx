@@ -1,7 +1,8 @@
 'use client';
 
 import { useConvexAuth } from 'convex/react';
-import { SignInButton } from '@clerk/clerk-react';
+import { SignInButton, UserButton } from '@clerk/clerk-react';
+import Link from 'next/link';
 
 import { useScrollTop } from '@/hooks/use-scroll-top';
 import { Button } from '@/components/ui/button';
@@ -27,8 +28,17 @@ const Navbar = () => {
               <Button variant='ghost'>Login</Button>
             </SignInButton>
             <SignInButton mode='modal'>
-              <Button>Get Zotion free</Button>
+              <Button>Get Zotion Free</Button>
             </SignInButton>
+          </>
+        )}
+
+        {isAuthenticated && !isLoading && (
+          <>
+            <Button variant='ghost' asChild>
+              <Link href='/documents'>Enter Zotion</Link>
+            </Button>
+            <UserButton afterSignOutUrl='/' />
           </>
         )}
         <ModeToggle />
