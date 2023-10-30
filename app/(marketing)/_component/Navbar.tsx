@@ -25,10 +25,12 @@ const Navbar = () => {
         {!isAuthenticated && !isLoading && (
           <>
             <SignInButton mode='modal'>
-              <Button variant='ghost'>Login</Button>
+              <Button variant='ghost' size='sm'>
+                Login
+              </Button>
             </SignInButton>
             <SignInButton mode='modal'>
-              <Button>Get Zotion Free</Button>
+              <Button size='sm'>Get Zotion Free</Button>
             </SignInButton>
           </>
         )}
