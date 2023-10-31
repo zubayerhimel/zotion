@@ -3,6 +3,7 @@ import { ThemeProvider } from '@/components/providers/theme-provider';
 import type { Metadata } from 'next';
 // import { Inter } from 'next/font/google';
 import { GeistSans, GeistMono } from 'geist/font';
+import { Toaster } from 'sonner';
 
 import './globals.css';
 
@@ -33,6 +34,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className={GeistSans.className}>
         <ConvexClientProvider>
           <ThemeProvider attribute='class' defaultTheme='system' enableSystem disableTransitionOnChange storageKey='zotion-theme'>
+            <Toaster />
             {children}
           </ThemeProvider>
         </ConvexClientProvider>
