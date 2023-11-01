@@ -20,7 +20,7 @@ interface ItemProps {
   level?: number;
   onExpand?: () => void;
   label: string;
-  onClick: () => void;
+  onClick?: () => void;
   icon: LucideIcon;
 }
 
@@ -94,7 +94,7 @@ const Item = ({ id, label, onClick, icon: Icon, documentIcon, active, expanded, 
             </DropdownMenuTrigger>
             <DropdownMenuContent className='w-60' align='start' side='right' forceMount>
               <DropdownMenuItem onClick={onArchive}>
-                <Trash className='w-4 h-4 mr-2' /> Delete
+                <Trash className='w-4 h-4 mr-2' /> <span className='mt-1'>Delete</span>
               </DropdownMenuItem>
               <DropdownMenuSeparator />
               <div className='text-xs text-muted-foreground p-2'>Last edited by {user?.fullName}</div>

@@ -1,5 +1,5 @@
 import { useMutation } from 'convex/react';
-import { ChevronsLeft, MenuIcon, PlusCircle, Search, Settings } from 'lucide-react';
+import { ChevronsLeft, MenuIcon, Plus, PlusCircle, Search, Settings, Trash } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 import { ElementRef, useEffect, useRef, useState } from 'react';
 import { toast } from 'sonner';
@@ -8,9 +8,11 @@ import { useMediaQuery } from 'usehooks-ts';
 import { api } from '@/convex/_generated/api';
 import { cn } from '@/lib/utils';
 
-import DocumentList from './DocumentList';
-import Item from './Item';
-import UserItem from './UserItem';
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
+import DocumentList from './document-list';
+import Item from './item';
+import UserItem from './user-item';
+import TrashBox from './trash-box';
 
 const Navigation = () => {
   const isMobile = useMediaQuery('(max-width: 768px)');
@@ -126,6 +128,15 @@ const Navigation = () => {
         </div>
         <div className='mt-4'>
           <DocumentList />
+          <Item label='Add a page' icon={Plus} onClick={onCreate} />
+          <Popover>
+            <PopoverTrigger className='w-full mt-4'>
+              <Item label='Trash' icon={Trash} />
+            </PopoverTrigger>
+            <PopoverContent side={isMobile ? 'bottom' : 'right'} className='p-0 w-72'>
+              <TrashBox />
+            </PopoverContent>
+          </Popover>
         </div>
         <div onMouseDown={handleMouseDown} onClick={resetWidth} className='opacity-0 group-hover/sidebar:opacity-100 transition cursor-ew-resize absolute h-full w-1 bg-primary/10 right-0 top-0' />
       </aside>

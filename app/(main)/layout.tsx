@@ -6,7 +6,7 @@ import { ReactNode } from 'react';
 
 import { Spinner } from '@/components/spinner';
 
-import Navigation from './_components/Navigation';
+import Navigation from './_components/navigation';
 
 const MainLayout = ({ children }: { children: ReactNode }) => {
   const { isAuthenticated, isLoading } = useConvexAuth();

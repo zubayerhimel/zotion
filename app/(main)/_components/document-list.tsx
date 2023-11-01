@@ -8,7 +8,7 @@ import { FileIcon } from 'lucide-react';
 import { api } from '@/convex/_generated/api';
 import { Doc, Id } from '@/convex/_generated/dataModel';
 import { cn } from '@/lib/utils';
-import Item from './Item';
+import Item from './item';
 
 interface IDocumentList {
   parentDocumentId?: Id<'documents'>;
