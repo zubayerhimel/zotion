@@ -1,5 +1,15 @@
-const UserSearch = () => {
-  return <div>search</div>;
+import { create } from 'zustand';
+
+type TUseSearch = {
+  isOpen: boolean;
+  onOpen: () => void;
+  onClose: () => void;
+  toggle: () => void;
 };
 
-export default UserSearch;
+export const useSearch = create<TUseSearch>((set, get) => ({
+  isOpen: false,
+  onOpen: () => set({ isOpen: true }),
+  onClose: () => set({ isOpen: false }),
+  toggle: () => set({ isOpen: !get().isOpen }),
+}));
