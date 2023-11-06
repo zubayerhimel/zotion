@@ -8,6 +8,7 @@ import { api } from '@/convex/_generated/api';
 import { Id } from '@/convex/_generated/dataModel';
 
 import Title from './title';
+import Banner from './banner';
 
 interface INavbar {
   isCollapsed: boolean;
@@ -39,6 +40,8 @@ const Navbar = ({ isCollapsed, resetWidth }: INavbar) => {
           <Title initialData={document} />
         </div>
       </nav>
+
+      {document.isArchived && <Banner documentId={document._id} />}
     </>
   );
 };
