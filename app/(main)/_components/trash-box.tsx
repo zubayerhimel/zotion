@@ -6,7 +6,7 @@ import { useParams, useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { toast } from 'sonner';
 
-import ConfirmModal from '@/components/confirm-modal';
+import ConfirmModal from '@/components/modals/confirm-modal';
 import { Spinner } from '@/components/spinner';
 import { Input } from '@/components/ui/input';
 import { api } from '@/convex/_generated/api';
@@ -68,11 +68,11 @@ const TrashBox = () => {
           <div key={document._id} role='button' onClick={() => onClick(document._id)} className='text-sm rounded-sm w-full hover:bg-muted-foreground/5 flex items-center text-primary justify-between'>
             <span className='truncate pl-2'>{document.title}</span>
             <div className='flex items-center'>
-              <div className='rounded-sm p-2 hover:bg-neutral-200' role='button' onClick={(e) => onRestore(e, document._id)}>
+              <div className='rounded-sm p-1 hover:bg-neutral-200 dark:hover:bg-neutral-600' role='button' onClick={(e) => onRestore(e, document._id)}>
                 <Undo className='w-4 h-w text-muted-foreground' />
               </div>
               <ConfirmModal onConfirm={() => onRemove(document._id)}>
-                <div className='rounded-sm p-2 hover:bg-neutral-200' role='button'>
+                <div className='rounded-sm p-1 hover:bg-neutral-200 dark:hover:bg-neutral-600' role='button'>
                   <Trash className='w-4 h-w text-muted-foreground' />
                 </div>
               </ConfirmModal>

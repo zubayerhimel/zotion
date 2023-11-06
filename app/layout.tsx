@@ -1,13 +1,12 @@
-import { ConvexClientProvider } from '@/components/providers/convex-provider';
-import { ThemeProvider } from '@/components/providers/theme-provider';
+import { GeistSans } from 'geist/font';
 import type { Metadata } from 'next';
-// import { Inter } from 'next/font/google';
-import { GeistSans, GeistMono } from 'geist/font';
 import { Toaster } from 'sonner';
 
-import './globals.css';
+import { ConvexClientProvider } from '@/components/providers/convex-provider';
+import { ModalProvider } from '@/components/providers/model-provider';
+import { ThemeProvider } from '@/components/providers/theme-provider';
 
-// const inter = Inter({ subsets: ['latin'] });
+import './globals.css';
 
 export const metadata: Metadata = {
   title: 'Zotion',
@@ -35,6 +34,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <ConvexClientProvider>
           <ThemeProvider attribute='class' defaultTheme='system' enableSystem disableTransitionOnChange storageKey='zotion-theme'>
             <Toaster />
+            <ModalProvider />
             {children}
           </ThemeProvider>
         </ConvexClientProvider>
