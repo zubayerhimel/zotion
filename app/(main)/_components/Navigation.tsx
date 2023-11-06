@@ -1,6 +1,6 @@
 import { useMutation } from 'convex/react';
 import { ChevronsLeft, MenuIcon, Plus, PlusCircle, Search, Settings, Trash } from 'lucide-react';
-import { usePathname } from 'next/navigation';
+import { useParams, usePathname } from 'next/navigation';
 import { ElementRef, useEffect, useRef, useState } from 'react';
 import { toast } from 'sonner';
 import { useMediaQuery } from 'usehooks-ts';
@@ -15,10 +15,12 @@ import DocumentList from './document-list';
 import Item from './item';
 import UserItem from './user-item';
 import TrashBox from './trash-box';
+import Navbar from './navbar';
 
 const Navigation = () => {
   const isMobile = useMediaQuery('(max-width: 768px)');
   const pathname = usePathname();
+  const params = useParams();
   const search = useSearch();
   const settings = useSettings();
 
@@ -145,7 +147,11 @@ const Navigation = () => {
         <div onMouseDown={handleMouseDown} onClick={resetWidth} className='opacity-0 group-hover/sidebar:opacity-100 transition cursor-ew-resize absolute h-full w-1 bg-primary/10 right-0 top-0' />
       </aside>
       <div ref={navbarRef} className={cn('absolute top-0 z-[99999] left-60 w-[calc(100%-240px]', isResetting && 'transition-all ease-in-out duration-300', isMobile && 'left-0 w-full')}>
-        <nav className='bg-transparent px-3 py-2 w-full'>{isCollapsed && <MenuIcon onClick={resetWidth} className='w-6 h-6 text-muted-foreground' role='button' />}</nav>
+        {!!params.documentId ? (
+          <Navbar isCollapsed={isCollapsed} resetWidth={resetWidth} />
+        ) : (
+          <nav className='bg-transparent px-3 py-2 w-full'>{isCollapsed && <MenuIcon onClick={resetWidth} className='w-6 h-6 text-muted-foreground' role='button' />}</nav>
+        )}
       </div>
     </>
   );
