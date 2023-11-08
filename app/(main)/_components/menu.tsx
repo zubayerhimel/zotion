@@ -41,7 +41,7 @@ export const Menu = ({ documentId }: IMenu) => {
       </DropdownMenuTrigger>
       <DropdownMenuContent className='w-60' align='end' alignOffset={8} forceMount>
         <DropdownMenuItem onClick={onArchive}>
-          <Trash className='w-4 h-4 mr-2' />
+          <Trash className='w-4 h-4 mr-2' /> Move to trash
         </DropdownMenuItem>
         <DropdownMenuSeparator />
         <div className='text-xs text-muted-foreground p-2'>Last edited by {user?.fullName}</div>

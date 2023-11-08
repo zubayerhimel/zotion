@@ -58,7 +58,7 @@ const Item = ({ id, label, onClick, icon: Icon, documentIcon, active, expanded, 
     event.stopPropagation();
     if (!id) return;
 
-    const promise = archive({ id });
+    const promise = archive({ id }).then(() => router.push('/documents'));
     toast.promise(promise, {
       loading: 'Moving to trash',
       success: 'Note moved to trash',
@@ -94,7 +94,7 @@ const Item = ({ id, label, onClick, icon: Icon, documentIcon, active, expanded, 
             </DropdownMenuTrigger>
             <DropdownMenuContent className='w-60' align='start' side='right' forceMount>
               <DropdownMenuItem onClick={onArchive}>
-                <Trash className='w-4 h-4 mr-2' /> <span className='mt-1'>Delete</span>
+                <Trash className='w-4 h-4 mr-2' /> <span className='mt-1'>Move to trash</span>
               </DropdownMenuItem>
               <DropdownMenuSeparator />
               <div className='text-xs text-muted-foreground p-2'>Last edited by {user?.fullName}</div>
