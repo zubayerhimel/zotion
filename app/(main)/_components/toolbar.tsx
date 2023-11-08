@@ -9,6 +9,7 @@ import IconPicker from '@/components/icon-picker';
 import { Button } from '@/components/ui/button';
 import { api } from '@/convex/_generated/api';
 import { Doc } from '@/convex/_generated/dataModel';
+import { useCoverImage } from '@/hooks/use-cover-image';
 
 interface IToolbar {
   initialData: Doc<'documents'>;
@@ -20,6 +21,8 @@ const Toolbar = ({ initialData, preview }: IToolbar) => {
 
   const update = useMutation(api.documents.update);
   const removeIcon = useMutation(api.documents.removeIcon);
+
+  const coverImage = useCoverImage();
 
   const [isEditing, setIsEditing] = useState(false);
   const [value, setValue] = useState(initialData?.title);
@@ -91,7 +94,7 @@ const Toolbar = ({ initialData, preview }: IToolbar) => {
         )}
 
         {!initialData.coverImage && !preview && (
-          <Button onClick={() => {}} className='text-muted-foreground text-xs' variant='outline' size='sm'>
+          <Button onClick={coverImage.onOpen} className='text-muted-foreground text-xs' variant='outline' size='sm'>
             <ImageIcon className='h-4 w-4 mr-2' /> Add cover
           </Button>
         )}

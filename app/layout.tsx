@@ -5,6 +5,7 @@ import { Toaster } from 'sonner';
 import { ConvexClientProvider } from '@/components/providers/convex-provider';
 import { ModalProvider } from '@/components/providers/model-provider';
 import { ThemeProvider } from '@/components/providers/theme-provider';
+import { EdgeStoreProvider } from '@/lib/edgetstore';
 
 import './globals.css';
 
@@ -32,11 +33,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang='en' suppressHydrationWarning>
       <body className={GeistSans.className}>
         <ConvexClientProvider>
-          <ThemeProvider attribute='class' defaultTheme='system' enableSystem disableTransitionOnChange storageKey='zotion-theme'>
-            <Toaster />
-            <ModalProvider />
-            {children}
-          </ThemeProvider>
+          <EdgeStoreProvider>
+            <ThemeProvider attribute='class' defaultTheme='system' enableSystem disableTransitionOnChange storageKey='zotion-theme'>
+              <Toaster />
+              <ModalProvider />
+              {children}
+            </ThemeProvider>
+          </EdgeStoreProvider>
         </ConvexClientProvider>
       </body>
     </html>
