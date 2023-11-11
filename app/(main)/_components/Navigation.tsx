@@ -17,7 +17,7 @@ import UserItem from './user-item';
 import TrashBox from './trash-box';
 import Navbar from './navbar';
 
-const Navigation = () => {
+export const Navigation = () => {
   const isMobile = useMediaQuery('(max-width: 768px)');
   const pathname = usePathname();
   const params = useParams();
@@ -157,5 +157,3 @@ const Navigation = () => {
     </>
   );
 };
-
-export default Navigation;
