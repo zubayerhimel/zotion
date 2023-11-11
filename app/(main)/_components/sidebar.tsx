@@ -12,7 +12,7 @@ import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover
 import { useSearch } from '@/hooks/use-search';
 import { useSettings } from '@/hooks/use-settings';
 import DocumentList from './document-list';
-import Item from './item';
+import { SidebarItem } from './sidebar-item';
 import UserItem from './user-item';
 import TrashBox from './trash-box';
 import Navbar from './navbar';
@@ -129,16 +129,16 @@ export const Sidebar = () => {
         </div>
         <div>
           <UserItem />
-          <Item label='Search' isSearch icon={Search} onClick={search.onOpen} />
-          <Item label='Settings' icon={Settings} onClick={settings.onOpen} />
-          <Item onClick={onCreate} label='New page' icon={PlusCircle} />
+          <SidebarItem label='Search' isSearch icon={Search} onClick={search.onOpen} />
+          <SidebarItem label='Settings' icon={Settings} onClick={settings.onOpen} />
+          <SidebarItem onClick={onCreate} label='New page' icon={PlusCircle} />
         </div>
         <div className='mt-4'>
           <DocumentList />
-          <Item label='Add a page' icon={Plus} onClick={onCreate} />
+          <SidebarItem label='Add a page' icon={Plus} onClick={onCreate} />
           <Popover>
             <PopoverTrigger className='w-full mt-4'>
-              <Item label='Trash' icon={Trash} />
+              <SidebarItem label='Trash' icon={Trash} />
             </PopoverTrigger>
             <PopoverContent side={isMobile ? 'bottom' : 'right'} className='p-0 w-72'>
               <TrashBox />

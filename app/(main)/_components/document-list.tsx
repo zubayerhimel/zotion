@@ -1,14 +1,14 @@
 'use client';
 
 import { useQuery } from 'convex/react';
+import { FileIcon } from 'lucide-react';
 import { useParams, useRouter } from 'next/navigation';
 import { useState } from 'react';
-import { FileIcon } from 'lucide-react';
 
 import { api } from '@/convex/_generated/api';
 import { Doc, Id } from '@/convex/_generated/dataModel';
 import { cn } from '@/lib/utils';
-import Item from './item';
+import { SidebarItem } from './sidebar-item';
 
 interface IDocumentList {
   parentDocumentId?: Id<'documents'>;
@@ -38,10 +38,10 @@ const DocumentList = ({ parentDocumentId, level = 0, data }: IDocumentList) => {
   if (documents === undefined) {
     return (
       <>
-        <Item.Skeleton level={level} />
+        <SidebarItem.Skeleton level={level} />
         {level === 0 && (
           <>
-            <Item.Skeleton level={level} /> <Item.Skeleton level={level} />
+            <SidebarItem.Skeleton level={level} /> <SidebarItem.Skeleton level={level} />
           </>
         )}
       </>
@@ -55,7 +55,7 @@ const DocumentList = ({ parentDocumentId, level = 0, data }: IDocumentList) => {
       </p>
       {documents?.map((document) => (
         <div key={document._id}>
-          <Item
+          <SidebarItem
             id={document._id}
             onClick={() => onRedirect(document._id)}
             label={document.title}
